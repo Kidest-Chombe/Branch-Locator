@@ -1,4 +1,4 @@
-#  Bank Branch Locator - Development Bank of Ethiopia
+#  Bank Branch Locator 
 
 A full-stack web application for locating Development Bank of Ethiopia branches across the country.
 
@@ -11,7 +11,7 @@ A full-stack web application for locating Development Bank of Ethiopia branches 
 - Detailed branch information with services offered
 
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 

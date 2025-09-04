@@ -9,32 +9,43 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dbe.banklocator.model.BankBranch;
-import com.dbe.banklocator.repository.BranchRepository;
 import com.dbe.banklocator.service.BranchService;
 
 @RestController
 @RequestMapping("/api/branches")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000")
 public class BranchController {
-
     private final BranchService branchService;
-    private final BranchRepository branchRepository;
 
-    public BranchController(BranchService branchService, BranchRepository branchRepository) {
+    public BranchController(BranchService branchService) {
         this.branchService = branchService;
-        this.branchRepository = branchRepository;
     }
 
     @GetMapping
     public List<BankBranch> getAllBranches() {
-        return branchRepository.findAll();
+        return branchService.getAllBranches();
     }
 
     @GetMapping("/nearby")
     public List<BankBranch> getNearbyBranches(
             @RequestParam double lat,
             @RequestParam double lon,
-            @RequestParam(defaultValue = "5") double radiusKm) {
-        return branchService.findNearby(lat, lon, radiusKm);
+            @RequestParam(defaultValue = "10") double radius) {
+        return branchService.findNearby(lat, lon, radius);
+    }
+
+    @GetMapping("/nearest")
+    public List<BankBranch> getBranchesByDistrict(@RequestParam String location) {
+        return branchService.findByDistrict(location);
+    }
+    
+    @GetMapping("/city")
+    public List<BankBranch> getBranchesByCity(@RequestParam String city) {
+        return branchService.findByCity(city);
+    }
+    
+    @GetMapping("/test")
+    public String test() {
+        return "API is working!";
     }
 }

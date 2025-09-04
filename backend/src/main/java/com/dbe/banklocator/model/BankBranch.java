@@ -9,11 +9,9 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "branches")
 public class BankBranch {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String address;
     private String city;
@@ -26,8 +24,8 @@ public class BankBranch {
 
     public BankBranch() {}
 
-    public BankBranch(String name, String address, String city, String zipCode,
-                      String phone, String email, Double latitude, Double longitude, String services) {
+    public BankBranch(String name, String address, String city, String zipCode, 
+                     String phone, String email, Double latitude, Double longitude, String services) {
         this.name = name;
         this.address = address;
         this.city = city;
@@ -39,7 +37,6 @@ public class BankBranch {
         this.services = services;
     }
 
-    // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getName() { return name; }
